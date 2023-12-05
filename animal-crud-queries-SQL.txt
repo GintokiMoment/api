@@ -1,0 +1,52 @@
+SELECT v.vaccination_id, v.animal_id, v.vaccination_name, v.vaccination_date,
+a.name AS animal_name, a.species AS animal_species
+FROM animal_vaccinations v
+INNER JOIN animals a ON v.animal_id = a.animal_id;
+
+-- SELECT VACCINATIONS 
+
+SELECT * FROM animal_vaccinations
+WHERE vaccination_id = 4;
+
+-- WHERE VACCINATIONS
+
+INSERT INTO animal_vaccinations (animal_id, vaccination_name, vaccination_date)
+VALUES (3, 'Canine Parvovirus', '2023-11-11');
+
+-- INSERT INTO
+
+UPDATE animal_vaccinations
+SET animal_id = newAnimalID, 
+    vaccination_name = 'newVaccinationName', 
+    vaccination_date = 'newVaccinationDate'
+WHERE vaccination_id = oldVaccinationID;
+
+-- UPDATE...
+
+
+
+
+
+SELECT animal_id, name, species, age, available_for_adoption
+FROM animals;
+
+
+-- SELECT ANIMALS 
+
+SELECT * FROM animals
+WHERE animal_id = 2;
+
+-- WHERE ANIMALS
+
+INSERT INTO animals (name, species, age, available_for_adoption)
+VALUES ('newAnimalName', 'newSpecies', newAge, true);
+
+
+-- INSERT INTO
+
+UPDATE animals
+SET name = 'updatedName', species = 'updatedSpecies', age = updatedAge, available_for_adoption = false
+WHERE animal_id = YourAnimalID;
+
+
+-- UPDATE...

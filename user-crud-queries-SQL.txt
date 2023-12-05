@@ -1,0 +1,130 @@
+#####################################
+## Get All Users
+#####################################
+SELECT 
+	user_id, 
+	user_first_name, 
+	user_last_name, 
+	user_email, 
+	user_password, 
+	user_salt, 
+	user_role, 
+	user_active 
+FROM users;
+
+## If you wanted to include the users' role name in your models, 
+## then you could use a JOIN like so:
+
+SELECT 
+	user_id, 
+	user_first_name, 
+	user_last_name, 
+	user_email, 
+	user_password, 
+	user_salt, 
+	user_role, 
+	user_active,
+    user_role_name
+FROM users
+INNER JOIN user_roles ON users.user_role = user_roles.user_role_id; 
+
+
+
+#####################################
+## Get User By ID
+#####################################
+SELECT 
+	user_id, 
+	user_first_name, 
+	user_last_name, 
+	user_email, 
+	user_password, 
+	user_salt, 
+	user_role, 
+	user_active 
+FROM users
+WHERE user_id = 1;
+
+## If you wanted to include the user's role name in your models, 
+## then you could use a JOIN like so:
+
+SELECT 
+	user_id, 
+	user_first_name, 
+	user_last_name, 
+	user_email, 
+	user_password, 
+	user_salt, 
+	user_role, 
+	user_active,
+    user_role_name
+FROM users
+INNER JOIN user_roles ON users.user_role = user_roles.user_role_id
+WHERE user_id = 1; 
+
+
+
+
+#####################################
+## Insert User
+#####################################
+
+## Note that we designated the user_email as a UNIQUE column
+## so you can't insert a user who has the 
+## same email as another user already in the table
+
+INSERT INTO users (
+	user_first_name, 
+	user_last_name, 
+	user_email, 
+	user_password, 
+	user_salt, 
+	user_role, 
+	user_active 
+) VALUES (
+	'Fred',
+	'Jones',
+	'f@j.com',
+	'opensesame',
+	'someSaltString',
+	1,
+	true
+)
+
+
+
+
+#####################################
+## Update User
+#####################################
+
+UPDATE users SET
+	user_first_name = 'Lu',
+	user_last_name = 'Vang',
+	user_email = 'l@v.com', 
+	user_role = 2,
+	user_password = 'test123',
+	user_salt = 'someSaltStr', 
+	user_active = false
+WHERE user_id = 4
+
+ADD THESE TO ROUTES
+
+
+URL(endpoint)	METHOD 		Description			Controller		Action Method
+------------------------------------------------------------------------------------------------------
+users/		GET 		gets all users			UserController		handleUsers
+users/ 		POST 		inserts a user			UserController		handleUsers
+users/1 	GET 		gets user with id of 1		UserController		handleSingleUser
+users/1 	PUT 		updates user with id of 1	UserController		handleSingleUser
+users/1 	DELETE 		deletes user with id of 1	UserController		handleSingleUser
+
+roles/		GET 		gets all roles			RoleController 		handleRoles
+
+EXAMPLE.. 
+
+books/       GET        gets all books          BookController      handleBooks
+books/		 POST		inserting a book		BookController		handleBooks
+books/:id    GET		get book by ID			BookController		handleSingleBook
+etc..
+TODO: Add your API calls here	
